@@ -1,28 +1,29 @@
 <div class="max-w-lg mx-auto">
   <h2 class="font-bold text-xl mb-4">Add Workout Details</h2>
-  <form (submit)="addWorkout()" class="space-y-4">
+  <form #workoutForm="ngForm" (ngSubmit)="addWorkout()" class="space-y-4">
     <div class="mb-4">
-      <label for="userName" class="block text-sm font-bold text-gray-700"
-        >User Name</label
-      >
+      <label for="userName" class="block text-sm font-bold text-gray-700">User Name*</label>
       <input
         id="userName"
         [(ngModel)]="userName"
         name="userName"
         type="text"
         required
+        #userNameRef="ngModel"
         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="userNameRef.invalid && userNameRef.touched" class="text-red-500 text-sm mt-1">
+        User Name is required.
+      </div>
     </div>
     <div class="mb-4">
-      <label for="workoutTypes" class="block text-sm font-bold text-gray-700"
-        >Workout Types</label
-      >
+      <label for="workoutTypes" class="block text-sm font-bold text-gray-700">Workout Type*</label>
       <select
         id="workoutTypes"
-        [(ngModel)]="selectedValue"
+        [(ngModel)]="workoutType"
         name="workoutTypes"
         required
+        #workoutTypesRef="ngModel"
         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
         <option disabled value="">Select a workout type</option>
@@ -30,11 +31,12 @@
           {{ workoutType }}
         </option>
       </select>
+      <div *ngIf="workoutTypesRef.invalid && workoutTypesRef.touched" class="text-red-500 text-sm mt-1">
+        Workout Type is required.
+      </div>
     </div>
     <div class="mb-4">
-      <label for="workoutMinutes" class="block text-sm font-bold text-gray-700"
-        >Minutes:</label
-      >
+      <label for="workoutMinutes" class="block text-sm font-bold text-gray-700">Workout Minutes*</label>
       <input
         id="workoutMinutes"
         type="number"
@@ -42,12 +44,17 @@
         name="workoutMinutes"
         required
         min="0"
+        #workoutMinutesRef="ngModel"
         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       />
+      <div *ngIf="workoutMinutesRef.invalid && workoutMinutesRef.touched" class="text-red-500 text-sm mt-1">
+        Workout Minutes are required.
+      </div>
     </div>
     <button
       type="submit"
-      class="w-full py-2 px-4 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700"
+      class="w-full py-2 px-4 bg-blue-600 text-white rounded-md shadow-sm"
+      [disabled]="!workoutForm.form.valid"
     >
       Add Workout
     </button>
@@ -72,5 +79,3 @@
     </ul>
   </div>
 </div>
-
-

@@ -1,20 +1,20 @@
 <div class="p-4 md:p-8">
   <div class="flex space-x-4 mb-4">
     <input
-      id="searchTerm"
+      [(ngModel)]="searchTerm"
       class="border p-2 rounded-md flex-1"
       (input)="search()"
       placeholder="Search"
     />
     <div class="flex-1">
       <select
-        id="workoutTypes"
+        [(ngModel)]="selectedWorkoutType"
         name="workoutTypes"
         required
         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         (change)="filter()"
       >
-        <option disabled value="">Select a workout type</option>
+        <option disabled value="">Filter by Workout Type</option>
         <option *ngFor="let workoutType of workoutTypes" [value]="workoutType">
           {{ workoutType }}
         </option>
@@ -22,5 +22,5 @@
     </div>
   </div>
   <!-- Workout Details Section -->
-  <app-workout-table></app-workout-table>
+  <app-workout-table [users]="filteredUsers"></app-workout-table>
 </div>
