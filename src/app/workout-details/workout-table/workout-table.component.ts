@@ -64,7 +64,7 @@ export class WorkoutTableComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+      console.log("this.dataSource.paginator.firstPage()",this.dataSource.paginator.firstPage());
     }
   }
   getUsers() {

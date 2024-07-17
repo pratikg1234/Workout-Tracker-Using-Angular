@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './workout-tracker.component.html',
   styleUrl: './workout-tracker.component.css',
@@ -42,50 +42,65 @@ export class WorkoutTrackerComponent {
   }
 
   addWorkout() {
-    const existingUser = this.workoutService.users.find(
-      (user) => user.name === this.userName
-    );
-
-    if (existingUser) {
-      // If user exists, add the new workout to their workouts array
-
-      //If in existing user the same workout type is already there
-      const existingWorkout = existingUser.workouts.find(
-        (workout) => workout.type === this.workoutType
+    if (this.workoutForm.valid) {
+      const existingUser = this.workoutService.users.find(
+        (user) => user.name === this.userName
       );
 
-      if (existingWorkout) {
-        this.showSnackBar(
-          'This workout type already exists for ' + `${this.userName}`
-        );
-        existingUser.workouts.push({
-          minutes: this.workoutMinutes,
-        });
-        return;
-      } else {
-        existingUser.workouts.push({
-          type: this.workoutType,
-          minutes: this.workoutMinutes,
-        });
-      }
-    } else {
-      // If user does not exist, create a new user
-      const newUser: User = {
-        id: this.workoutService.users.length + 1,
-        name: this.userName,
-        workouts: [{ type: this.workoutType, minutes: this.workoutMinutes }],
-      };
-      this.workoutService.addUser(newUser);
-    }
+      if (existingUser) {
+        // If user exists, add the new workout to their workouts array
 
-    this.showSnackBar('Workout details added for ' + `${this.userName}`);
-    this.workoutForm.resetForm();
+        //If in existing user the same workout type is already there
+        const existingWorkout = existingUser.workouts.find(
+          (workout) => workout.type === this.workoutType
+        );
+
+        if (existingWorkout) {
+          this.showSnackBar(
+            'This workout type already exists for ' + `${this.userName}`
+          );
+          existingUser.workouts.push({
+            minutes: this.workoutMinutes,
+          });
+          return;
+        } else {
+          existingUser.workouts.push({
+            type: this.workoutType,
+            minutes: this.workoutMinutes,
+          });
+        }
+      } else {
+        // If user does not exist, create a new user
+        const newUser: User = {
+          id: this.workoutService.users.length + 1,
+          name: this.userName,
+          workouts: [{ type: this.workoutType, minutes: this.workoutMinutes }],
+        };
+        this.workoutService.addUser(newUser);
+      }
+
+      this.showSnackBar('Workout details added for ' + `${this.userName}`);
+
+      this.workoutForm.resetForm();
+    }
+  }
+  showSnackbarForAdd($event: any) {
+    if(!this.workoutForm.valid){
+      this.snackBar.open('First fill all the required details', 'Close', {
+        duration: 1000,
+        verticalPosition: 'top',
+      });
+    }
+    
   }
   showSnackBar(message: string) {
-    this.snackBar.open(message, 'Close', {
-      duration: 3000,
-      verticalPosition: 'top',
-    });
+    if(this.workoutForm.valid){
+      this.snackBar.open(message, 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+    }
+    
   }
   //for navigating to the workout deatils page
   navigateToWorkoutDetails() {

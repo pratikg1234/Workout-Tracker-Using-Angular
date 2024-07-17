@@ -29,6 +29,37 @@ export class WorkoutService {
         { type: 'Cycling', minutes: 40 },
       ],
     },
+    {
+      id: 4,
+      name: 'Doe',
+      workouts: [
+        { type: 'Running', minutes: 30 },
+        { type: 'Cycling', minutes: 45 },
+      ],
+    },{
+      id: 5,
+      name: 'John123',
+      workouts: [
+        { type: 'Running', minutes: 30 },
+        { type: 'Cycling', minutes: 45 },
+      ],
+    },
+    {
+      id: 6,
+      name: 'Pratik Doe',
+      workouts: [
+        { type: 'Running', minutes: 30 },
+        { type: 'Cycling', minutes: 45 },
+      ],
+    },
+    {
+      id: 7,
+      name: 'John1234 Doe',
+      workouts: [
+        { type: 'Running', minutes: 30 },
+        { type: 'Cycling', minutes: 45 },
+      ],
+    },
   ];
   constructor() {}
 

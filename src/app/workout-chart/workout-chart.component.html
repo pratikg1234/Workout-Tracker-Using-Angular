@@ -1,0 +1,23 @@
+<div class="flex flex-row h-screen">
+    <!-- Section 1: User List -->
+    <div class="w-1/5 p-4">
+      <mat-card>
+        <mat-card-title>User List</mat-card-title>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let user of users">{{ user.name }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Section 2: Graph Chart -->
+    <div class="w-4/5 p-4">
+      <mat-card>
+        <mat-card-content>
+          <div echarts [options]="chartOptions" class="h-96"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

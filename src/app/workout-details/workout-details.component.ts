@@ -38,7 +38,10 @@ export class WorkoutDetailsComponent {
     // this.users = this.workoutService.getUsers();
     this.filteredUsers = this.workoutService.users;
   }
-
+  ngOnChanges(){
+    this.filter();
+    this.search();
+  }
   search() {
     this.filteredUsers = this.workoutService.users.filter((user) =>
       user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -46,22 +49,21 @@ export class WorkoutDetailsComponent {
     console.log('this.filteredUsers', this.filteredUsers);
     if (!this.searchTerm) {
     }
-    if (this.selectedWorkoutType) {
-      this.filter();
-    }
   }
 
   filter() {
     console.log('this.selectedWorkoutType', this.selectedWorkoutType);
-    if (this.selectedWorkoutType !== 'All') {
-      this.filteredUsers = this.filteredUsers.filter((user) =>
+    if (this.selectedWorkoutType != 'All') {
+      this.filteredUsers = this.workoutService.users.filter((user) =>
         user.workouts.some(
           (workout) => workout.type === this.selectedWorkoutType
         )
       );
-    } else if (this.selectedWorkoutType === 'All') {
-      this.filteredUsers = this.filteredUsers;
+    } else if (this.selectedWorkoutType == 'All') {
+      this.filteredUsers = this.workoutService.users
     }
+
+
   }
   get paginatedUsers() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
