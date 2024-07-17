@@ -49,8 +49,6 @@ export class WorkoutTableComponent implements AfterViewInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.getUsers());
-    // console.log('datasourse', this.dataSource);
-    console.log("users: ", this.users)
   }
 
   ngOnChanges(){

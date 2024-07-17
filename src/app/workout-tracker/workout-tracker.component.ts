@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-workout-tracker',
   standalone: true,
@@ -17,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatButtonModule
   ],
   templateUrl: './workout-tracker.component.html',
   styleUrl: './workout-tracker.component.css',

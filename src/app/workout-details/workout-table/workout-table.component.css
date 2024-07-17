@@ -1,11 +1,21 @@
-td,
-th {
-  width: 25%;
+.custom-table-container {
+  background-color: #f8f5f5 !important;
+  border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.mat-mdc-form-field {
-  font-size: 14px;
+.custom-table {
   width: 100%;
+  border-collapse: collapse;
 }
-th{
+.custom-header {
+  background-color: rgba(237, 223, 223, 0.479) !important;
+  color: rgb(0, 0, 0);
   font-weight: bold;
+  font-size: medium;
+}
+.custom-cell {
+  /* padding: 8px; */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding-left: 1.5%;
 }

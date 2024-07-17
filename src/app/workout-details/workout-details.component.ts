@@ -4,10 +4,24 @@ import { WorkoutService } from '../services/workout.service';
 import { CommonModule } from '@angular/common';
 import { WorkoutTableComponent } from './workout-table/workout-table.component';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-workout-details',
   standalone: true,
-  imports: [CommonModule, WorkoutTableComponent, FormsModule],
+  imports: [
+    CommonModule,
+    WorkoutTableComponent,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './workout-details.component.html',
   styleUrl: './workout-details.component.css',
 })
@@ -18,7 +32,7 @@ export class WorkoutDetailsComponent {
   filterTerm: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 2;
-  workoutTypes = ['All', 'Swimming', 'Running', 'Yoga', 'Cycling'];
+  workoutTypes = ['All','Swimming', 'Running', 'Yoga', 'Cycling'];
   selectedWorkoutType: string = '';
   constructor(private workoutService: WorkoutService) {
     // this.users = this.workoutService.getUsers();
@@ -32,7 +46,7 @@ export class WorkoutDetailsComponent {
     console.log('this.filteredUsers', this.filteredUsers);
     if (!this.searchTerm) {
     }
-    if(this.selectedWorkoutType){
+    if (this.selectedWorkoutType) {
       this.filter();
     }
   }
@@ -45,7 +59,7 @@ export class WorkoutDetailsComponent {
           (workout) => workout.type === this.selectedWorkoutType
         )
       );
-    } else if(this.selectedWorkoutType === 'All') {
+    } else if (this.selectedWorkoutType === 'All') {
       this.filteredUsers = this.filteredUsers;
     }
   }
