@@ -32,27 +32,27 @@ export class WorkoutDetailsComponent {
   filterTerm: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 2;
-  workoutTypes = ['All','Swimming', 'Running', 'Yoga', 'Cycling'];
+  workoutTypes = ['All', 'Swimming', 'Running', 'Yoga', 'Cycling'];
   selectedWorkoutType: string = '';
   constructor(private workoutService: WorkoutService) {
     // this.users = this.workoutService.getUsers();
     this.filteredUsers = this.workoutService.users;
   }
-  ngOnChanges(){
+  ngOnChanges() {
     this.filter();
     this.search();
   }
+  //Search Functionality
   search() {
     this.filteredUsers = this.workoutService.users.filter((user) =>
       user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-    console.log('this.filteredUsers', this.filteredUsers);
-    if (!this.searchTerm) {
-    }
+    // console.log('this.filteredUsers', this.filteredUsers);
   }
 
+  //Filter By workout type
   filter() {
-    console.log('this.selectedWorkoutType', this.selectedWorkoutType);
+    // console.log('this.selectedWorkoutType', this.selectedWorkoutType);
     if (this.selectedWorkoutType != 'All') {
       this.filteredUsers = this.workoutService.users.filter((user) =>
         user.workouts.some(
@@ -60,22 +60,7 @@ export class WorkoutDetailsComponent {
         )
       );
     } else if (this.selectedWorkoutType == 'All') {
-      this.filteredUsers = this.workoutService.users
+      this.filteredUsers = this.workoutService.users;
     }
-
-
   }
-  get paginatedUsers() {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    return this.filteredUsers.slice(start, end);
-  }
-
-  // nextPage() {
-  //   this.currentPage++;
-  // }
-
-  // previousPage() {
-  //   this.currentPage--;
-  // }
 }

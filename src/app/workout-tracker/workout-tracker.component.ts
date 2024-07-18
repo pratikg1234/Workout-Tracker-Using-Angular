@@ -37,9 +37,7 @@ export class WorkoutTrackerComponent {
     private workoutService: WorkoutService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {
-    // this.users = this.workoutService.getUsers();
-  }
+  ) {}
 
   addWorkout() {
     if (this.workoutForm.valid) {
@@ -48,8 +46,6 @@ export class WorkoutTrackerComponent {
       );
 
       if (existingUser) {
-        // If user exists, add the new workout to their workouts array
-
         //If in existing user the same workout type is already there
         const existingWorkout = existingUser.workouts.find(
           (workout) => workout.type === this.workoutType
@@ -84,26 +80,31 @@ export class WorkoutTrackerComponent {
       this.workoutForm.resetForm();
     }
   }
+  //If User dont fill anything and click on submit button
   showSnackbarForAdd($event: any) {
-    if(!this.workoutForm.valid){
+    if (!this.workoutForm.valid) {
       this.snackBar.open('First fill all the required details', 'Close', {
         duration: 1000,
         verticalPosition: 'top',
       });
     }
-    
   }
+  //For showing any message by using snackbar
   showSnackBar(message: string) {
-    if(this.workoutForm.valid){
+    if (this.workoutForm.valid) {
       this.snackBar.open(message, 'Close', {
         duration: 3000,
         verticalPosition: 'top',
       });
     }
-    
   }
   //for navigating to the workout deatils page
   navigateToWorkoutDetails() {
     this.router.navigate(['workout-tracker/details']);
+  }
+
+  //for navigating to the workout progress page
+  navigateToWorkoutCharts() {
+    this.router.navigate(['workout-tracker/chart']);
   }
 }

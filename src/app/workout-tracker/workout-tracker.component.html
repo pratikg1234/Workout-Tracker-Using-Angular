@@ -68,15 +68,19 @@
 
   <!-- Section to Display Workout List and Navigate -->
   <div class="mt-8">
-    <h3 class="font-bold text-lg mb-4">
-      Want To See Workout List.. Click Below..
-    </h3>
     <button
       mat-raised-button
       class="w-full font-semibold custom-button"
       (click)="navigateToWorkoutDetails()"
     >
       View Workout Details
+    </button>
+    <button
+      mat-raised-button
+      class="w-full font-semibold custom-button mt-8"
+      (click)="navigateToWorkoutCharts()"
+    >
+      View Workout Progress
     </button>
   </div>
 </div>

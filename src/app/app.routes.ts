@@ -4,6 +4,7 @@ import { WorkoutTrackerComponent } from './workout-tracker/workout-tracker.compo
 import { WorkoutDetailsComponent } from './workout-details/workout-details.component';
 import { WorkoutChartComponent } from './workout-chart/workout-chart.component';
 
+//Routes For Different Pages
 export const routes: Routes = [
   { path: 'workout-tracker', component: WorkoutTrackerComponent },
   { path: '', redirectTo: '/workout-tracker', pathMatch: 'full' },

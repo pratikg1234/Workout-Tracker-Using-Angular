@@ -3,4 +3,5 @@
 @tailwind utilities;
 .custom-button {
   color: black !important;
+  background-color: rgba(242, 243, 242, 0.836) !important;
 }
