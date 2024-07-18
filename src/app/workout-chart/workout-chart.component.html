@@ -1,0 +1,28 @@
+<div class="flex flex-row h-screen">
+  <!-- Section 1: User List -->
+  <div class="w-1/5 p-4">
+    <mat-card>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item
+            *ngFor="let user of users; let i=index"
+            (click)="selectUser(user)"
+            [ngClass]="{ 'bg-gray-300': selectUser===undefined }"
+            class="cursor-pointer hover:bg-gray-200"
+          >
+            {{ user }}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Section 2: Graph Chart -->
+  <div class="w-4/5 p-4 h-full">
+    <mat-card class="h-full">
+      <mat-card-content class="h-full">
+        <div echarts [options]="chartOptions" class="h-full"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

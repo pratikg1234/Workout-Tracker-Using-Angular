@@ -3,8 +3,10 @@ import { User } from '../models/workout';
 @Injectable({
   providedIn: 'root',
 })
+
+//Created the three dummy users
 export class WorkoutService {
-  private users: User[] = [
+  public users: User[] = [
     {
       id: 1,
       name: 'John Doe',
@@ -31,23 +33,9 @@ export class WorkoutService {
     },
   ];
   constructor() {}
-  getUsers() {
-    return this.users.map(user => {
-      const numberOfWorkouts = user.workouts.length;
-      const totalWorkoutMinutes = user.workouts.reduce((sum, workout) => sum + workout.minutes, 0);
-      const workouts = user.workouts.map(workout => workout.type).join(', ');
 
-      return {
-        name: user.name,
-        workouts: workouts,
-        numberOfWorkouts: numberOfWorkouts,
-        totalWorkoutMinutes: totalWorkoutMinutes
-      };
-    });
-  }
-
+  //For adding new user
   addUser(user: User) {
     this.users.push(user);
   }
-  
 }
