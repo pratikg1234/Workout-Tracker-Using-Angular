@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+**Unit Testing Report**
+I have attched the unit tests for each of the component & service files.
+![image](https://github.com/user-attachments/assets/bbe594a1-16ff-4551-b858-eb4b3a7ea0f2)
+
+
