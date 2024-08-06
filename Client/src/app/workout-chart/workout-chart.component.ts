@@ -25,7 +25,7 @@ export class WorkoutChartComponent {
     this.workoutArray = this.workoutservice.users[0].workouts;
     const aggregatedWorkouts = this.aggregateWorkouts(this.workoutArray);
     this.updateChartOptions(aggregatedWorkouts);
-    //when the page loades for first time then we have to show Tile of Furst User 
+    //when the page loades for first time then we have to show Tile of Furst User
     if (!this.selectedUser) {
       this.selectedUser = this.users[0];
       this.chartOptions = {
@@ -83,6 +83,7 @@ export class WorkoutChartComponent {
       }
     });
 
+    //conversion from map to array
     return Array.from(workoutMap, ([type, minutes]) => ({ type, minutes }));
   }
 

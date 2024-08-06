@@ -25,6 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class WorkoutTrackerComponent {
   userName: string = '';
+  userNameExceedsMaxLength: boolean = false;
+  maxLength: number = 25;
   workoutType: string = '';
   workoutMinutes: number = 0;
   users: User[] = [];
@@ -39,6 +41,10 @@ export class WorkoutTrackerComponent {
     private snackBar: MatSnackBar
   ) {}
 
+  //If username is more then 255 characters
+  validateUserName(): void {
+    this.userNameExceedsMaxLength = this.userName.length > this.maxLength;
+  }
   addWorkout() {
     if (this.workoutForm.valid) {
       const existingUser = this.workoutService.users.find(

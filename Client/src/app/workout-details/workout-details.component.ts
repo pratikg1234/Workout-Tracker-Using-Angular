@@ -33,7 +33,7 @@ export class WorkoutDetailsComponent {
   currentPage: number = 1;
   itemsPerPage: number = 2;
   workoutTypes = ['All', 'Swimming', 'Running', 'Yoga', 'Cycling'];
-  selectedWorkoutType: string = '';
+  selectedWorkoutType: string = 'All';
   constructor(private workoutService: WorkoutService) {
     // this.users = this.workoutService.getUsers();
     this.filteredUsers = this.workoutService.users;
@@ -41,9 +41,14 @@ export class WorkoutDetailsComponent {
   ngOnChanges() {
     this.filter();
     this.search();
+    
   }
   //Search Functionality
   search() {
+    //If the search term is empty then the filter type should be All
+    if(!this.searchTerm){
+      this.selectedWorkoutType = 'All';
+    }
     this.filteredUsers = this.workoutService.users.filter((user) =>
       user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );

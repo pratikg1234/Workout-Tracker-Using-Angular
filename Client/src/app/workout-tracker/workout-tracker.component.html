@@ -11,11 +11,16 @@
         type="text"
         required
         #userNameRef="ngModel"
+        maxlength="255"
+        (ngModelChange)="validateUserName()"
       />
-      <mat-error *ngIf="userNameRef.invalid && userNameRef.touched"
+      <mat-error *ngIf="userNameRef.errors?.['required'] && userNameRef.touched"
         >User Name is required.</mat-error
       >
-    </mat-form-field>
+      <mat-error *ngIf="userNameExceedsMaxLength">
+        User Name cannot exceed 255 characters.
+      </mat-error>
+    </mat-form-field> 
 
     <mat-form-field class="w-full">
       <mat-label>Workout Type</mat-label>
